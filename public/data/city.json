@@ -1,0 +1,9 @@
+[{
+        "name": "beijing",
+        "location": "north"
+    },
+    {
+        "name": "fujian",
+        "location": "south"
+    }
+]
