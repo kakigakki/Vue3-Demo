@@ -36,7 +36,8 @@ export default defineComponent({
       noDone: [],
     });
     const addToList = (data: Ref) => {
-      todoList.all.push(data.value);
+      todoList.all.unshift(data.value);
+      todoList.noDone.unshift(data.value);
     };
     return {
       todoList,
