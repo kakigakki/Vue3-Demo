@@ -47,7 +47,9 @@ module.exports = {
         extend: {
             backgroundColor: ['checked'],
             borderColor: ['checked'],
-            textDecoration: ["checked-sibling"]
+            textDecoration: ["checked-sibling"],
+            transform: ["active"],
+            outline: ["active"]
         },
     },
     plugins: [checkedSiblingPlugin],
