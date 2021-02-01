@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, Ref } from "vue";
+import { defineComponent, onUnmounted, reactive, Ref } from "vue";
 import SearchBox from "./components/SearchBox.vue";
 import List from "./components/List.vue";
 
@@ -29,10 +29,23 @@ export default defineComponent({
   },
   emits: ["addToList"],
   setup() {
-    const todoList = reactive<IntertodoList[]>([]);
+    let localTodo = localStorage.getItem("todoList");
+    if (!localTodo) {
+      localTodo = "[]";
+    }
+    const todoList = reactive<IntertodoList[]>(JSON.parse(localTodo));
+    const beforeunloadEvent = () => {
+      if (Object.values(todoList).length) {
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+      }
+    };
+    window.addEventListener("beforeunload", beforeunloadEvent);
     const addToList = (data: Ref) => {
       todoList.unshift({ value: data.value, isDone: false });
     };
+    onUnmounted(() => {
+      window.removeEventListener("beforeunload", beforeunloadEvent);
+    });
     return {
       todoList,
       addToList,

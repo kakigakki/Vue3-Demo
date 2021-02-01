@@ -16,7 +16,7 @@
       :key="item"
       :for="index"
       class="flex items-center text-c1 w-full px-4 py-5 bg-white my-5 rounded-lg shadow-sm cursor-pointer transition duration-300"
-      @click.prevent="item.isDone = !item.isDone"
+      @click.prevent="addTodo(item)"
     >
       <input
         type="checkbox"
@@ -49,11 +49,11 @@ export default defineComponent({
       }
       return props.todoList;
     };
-    const add = () => {
-      console.log(1);
+    const addTodo = (item: IntertodoList) => {
+      item.isDone = !item.isDone;
     };
     return {
-      add,
+      addTodo,
       filterList,
       tabName,
       tabIndex,
