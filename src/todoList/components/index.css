@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.form-tick:checked {
+    background-image: url("./assets/打勾.svg");
+    border-color: transparent;
+    background-size: 100% 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+@layer utilities {
+    .scroll-none {
+        scrollbar-width: 0
+    }
+}
